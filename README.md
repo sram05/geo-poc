@@ -24,8 +24,9 @@ module "vpc" {
     public_subnet_az2_cidr      = var.public_subnet_az2_cidr
     private_subnet_az1_cidr     = var.private_subnet_az1_cidr
     private_subnet_az2_cidr     = var.private_subnet_az2_cidr
-
 }
+
+===============================================================================
 
 module "ec2" {
   source = "./ec2-module/ec2"
@@ -36,7 +37,7 @@ module "ec2" {
   vpc_id  = module.vpc.vpc_id
   depends_on = [module.vpc]
 }
-
+=========================================================================
 module "zones" {
   source  = "terraform-aws-modules/route53/aws//modules/zones"
   version = "~> 2.0"
@@ -56,6 +57,7 @@ module "zones" {
   }
 }
 
+==============================================================================
 
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
